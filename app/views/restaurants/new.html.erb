@@ -1,12 +1,11 @@
-<h1>Restaurants:</h1>
-<ul>
-  <% @restaurants.each do |restaurant| %>
-  <li><%= link_to restaurant.name, restaurant_path(restaurant[:id]) %>
-      <%= link_to "Delete", restaurant_path(restaurant),
-          method: :delete,
-          data: { confirm: "Delete #{restaurant.name}?" } %>
-  </li>
-  <% end %>
-</ul>
+<div class="container">
+<h1>Fill the form to create a new restaurant!</h1>
 
-<p><%= link_to "Create a new restaurant", new_restaurant_path %></p>
+<p><%= simple_form_for @restaurant do |f| %></p>
+<p><%= f.input :name %></p>
+<p><%= f.input :address %></p>
+<p><%= f.input :phone_number %></p>
+<p><%= f.input :category , collection: ["chinese", "italian", "japanese", "french", "belgian"]%></p>
+<p><%= f.button :submit %></p>
+<% end %>
+</div>
